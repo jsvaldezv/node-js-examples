@@ -125,7 +125,6 @@ app.get("/productoRandom", (req, res) => {
 	}
 	
 	let randomIndex = randomInteger(1,3);
-	console.log(randomIndex);
 	let cont = new Contenedor("./productos.txt");
 
 	cont.getById(randomIndex).then(result => res.send(result));
