@@ -7,8 +7,8 @@ app.use(express.urlencoded({extendend: true}));
 app.use(express.json());
 app.use("/api/productos", indexRouter);
 
-app.listen(PORT, () => console.log(`Port: ${PORT}`));
+app.listen(PORT, () => console.log(`Port: ${PORT}`)).on("error", (error) => console.log(error));
 
 app.get("/", (req, res) => {
-	res.json({mensaje: "Home"});
+	res.sendFile(__dirname + "/public/index.html")
 })
