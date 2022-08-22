@@ -1,0 +1,22 @@
+html
+	head
+		title="Agregar producto"
+	body
+		ul
+			li
+				a(href="/productos/agregarProducto") Agregar Producto
+			li
+				a(href="/productos/mostrarProductos") Mostrar Productos
+
+		h2="Agregar producto"
+		form(action='/productos', method='post')
+			div
+				label= "Nombre"
+				input(type="text" name="title" id="") 
+			div
+				label= "Precio"
+				input(type="text" name="price" id="") 
+			div
+				label= "Foto"
+				input(type="text" name="img" id="") 
+			input(type="submit" value="Agregar producto")

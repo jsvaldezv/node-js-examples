@@ -1,0 +1,24 @@
+<%- include("./partials/nav.ejs")  %> 
+<h2>Lista de productos</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Precio</th>
+			<th>Foto</th> 
+		</tr>
+	</thead>
+	<tbody>
+		<% if (productos.length === 0){  %> 
+			<p> No hay productos </p>
+		<% } else { %> 
+		<% productos.forEach(p => { %>
+			<tr>
+				<td> <p><%= p.title %></p> </td>
+				<td> <p><%= p.price %></p> </td>
+				<td> <img width="300px" src="<%= p.img %>"/> </td>
+			</tr>
+		<% }) %>
+		<% } %>
+	</tbody>
+</table>

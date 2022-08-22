@@ -1,0 +1,30 @@
+html
+	head
+		title="Lista de productos"
+	body
+		ul
+			li
+				a(href="/productos/agregarProducto") Agregar Producto
+			li
+				a(href="/productos/mostrarProductos") Mostrar Productos
+				
+		h2="Lista de productos"
+		table
+			thead
+				tr
+					th="Nombre"
+					th="Precio"
+					th="Foto"
+			tbody
+				if (productos.length === 0)	
+					<p> No hay productos </p>
+				else
+					each p in productos 
+						tr
+							td 
+								p= p.title
+							td
+								p= p.price 
+							td
+								img(width="300px" src=p.img)
+			
