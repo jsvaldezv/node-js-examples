@@ -7,6 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Chat App</title>
 
+	<link rel="stylesheet" href="./styles.css">
+
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/main.js"></script>
 
@@ -15,13 +17,16 @@
 	
 	<h1>Chat App</h1>
 
-	<div id="messages"> </div>
+	<form onsubmit="return addProduct(this)">
 
-	<form onsubmit="return addMessage(this)">
-		<input type="text" id="username" placeholder="Username">
-		<input type="text" id="texto" placeholder="Tell us something">
+		<input type="text" id="name" placeholder="Name">
+		<input type="text" id="price" placeholder="Price">
+		<input type="text" id="photo" placeholder="Photo">
 		<input type="submit" value="Send">
+
 	</form>
+
+	<div id="products"> </div>
 
 </body>
 </html>

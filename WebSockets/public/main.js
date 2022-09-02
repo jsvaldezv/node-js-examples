@@ -3,21 +3,25 @@ const socket = io.connect();
 const render = (data) => 
 {
     const html = data.map ((elem, index) => {
-        return(	`<div>
-            		<strong>${elem.author}</strong>:
-            		<em>${elem.text}</em>
+        return(	`<div class="product">
+            		<strong>${elem.name}</strong>
+            		<em>${elem.price}</em>
+					<img src=${elem.photo} />
             	</div>`)
     }).join(" ")
 
-    document.getElementById("messages").innerHTML = html;
+    document.getElementById("products").innerHTML = html;
 }
 
-const addMessage = (e) => 
+const addProduct = (e) => 
 {
-    const mensaje = { author:document.getElementById('username').value, 
-					  text:document.getElementById('texto').value }
-    socket.emit('new-message', mensaje);
+    const product = { name:document.getElementById('name').value, 
+					  price:document.getElementById('price').value, 
+					  photo:document.getElementById('photo').value }
+
+    socket.emit ('new-product', product);
+
     return false;
 }
 
-socket.on ('messages', (data) => { render(data) })
+socket.on ('products', (data) => { render(data) })

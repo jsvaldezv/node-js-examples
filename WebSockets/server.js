@@ -6,19 +6,19 @@ const app = express();
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 
-let messages = [
-    {author:"Juan",text:"Hola ¿Qué tal?"},
-    {author:"Pedro",text:"Muy Bien y vos?"},
-    {author:"Ana",text:"Geinal!"}
+let products = [
+    { name:"Ruler", price:"40", photo:"https://upload.wikimedia.org/wikipedia/commons/b/bd/Draw_book.png" },
+    { name:"Eraser", price:"5", photo:"https://upload.wikimedia.org/wikipedia/commons/b/bd/Draw_book.png" },
+    { name:"Book", price:"100", photo:"https://upload.wikimedia.org/wikipedia/commons/b/bd/Draw_book.png" }
 ]
 
 app.use(express.static('public'))
 
-app.get('/',(req,res)=>{
+app.get('/', (req,res)=>{
     res.sendFile ('./index.html',{root:__dirname})
 })
 
-const server = httpServer.listen(8080,()=>{
+const server = httpServer.listen(8080, () => { 
     console.log (`El servidor está escuchando por el puerto 8080`);
 })
 
@@ -26,16 +26,17 @@ server.on('error',(err)=>{
     console.log (err);
 })
 
-io.on('connection',(socket)=>{
-    console.log('se conecto un cliente');
+io.on('connection', (socket) => 
+{
+    console.log('Se conecto un cliente');
 
     // Send
-    socket.emit('messages', messages)
+    socket.emit ('products', products);
 
-    socket.on('new-message', (data) => {
-        // messages.push(data);
-        messages = [...messages, data];
-        io.sockets.emit ('messages', messages);
+    socket.on('new-product', (data) => 
+	{
+        products = [...products, data];
+        io.sockets.emit ('products', products);
     })
     
 })
