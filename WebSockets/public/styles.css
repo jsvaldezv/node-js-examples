@@ -1,0 +1,23 @@
+img{
+	width: 100px;
+	height: 100px;
+}
+
+#products{
+	width: 40%;
+	height: auto;
+	margin: 10px 0;
+}
+
+.product{
+	width: 100%;
+
+	display: flex;
+	justify-content:space-evenly;
+	align-items:center;
+
+	margin: 0px 0;
+	padding: 20px 0;
+
+	border: 1px solid black;
+}
